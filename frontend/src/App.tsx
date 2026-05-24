@@ -1,5 +1,10 @@
+import AuthPage from './pages/AuthPage'
 const App = () => {
-  return <div>App</div>
+  return (
+    <div className='app-layout animate-fade-in'>
+      <AuthPage />
+    </div>
+  )
 }
 
 export default App
