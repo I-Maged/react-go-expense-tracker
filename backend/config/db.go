@@ -10,6 +10,8 @@ import (
 	"gorm.io/gorm"
 )
 
+var DB *gorm.DB
+
 func ConnectDB() *gorm.DB {
 	host := os.Getenv("DB_HOST")
 	port := os.Getenv("DB_PORT")
@@ -33,5 +35,6 @@ func ConnectDB() *gorm.DB {
 	}
 
 	log.Println("Database migrations applied successfully")
+	DB = db
 	return db
 }
