@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 
 import './AuthPage.css'
+import { api } from '../services/api'
 
 type AuthMode = 'login' | 'signup'
 
@@ -57,6 +58,7 @@ const AuthPage = () => {
       if (mode === 'login') {
         setSuccess('Authentication successful! Loading dashboard...')
       } else {
+        await api.register(email, password)
         setSuccess('Account created successfully! You can now sign in.')
         setMode('login')
         setPassword('')
