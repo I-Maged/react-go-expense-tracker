@@ -1,5 +1,14 @@
 const API_BASE_URL = 'http://localhost:8080/api'
 
+const getHeaders = (): HeadersInit => {
+  const token = localStorage.getItem('expense-tracker-token')
+  const headers: HeadersInit = { 'Content-Type': 'application/json' }
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`
+  }
+  return headers
+}
+
 export const api = {
   async register(email: string, password: string) {
     const response = await fetch(`${API_BASE_URL}/auth/register`, {
@@ -32,5 +41,68 @@ export const api = {
       token: string
       user: { id: number; email: string }
     }>
+  },
+
+  // Transactions API
+  async getTransactions() {
+    const response = await fetch(`${API_BASE_URL}/transactions`, {
+      method: 'GET',
+      headers: getHeaders(),
+    })
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        localStorage.removeItem('expense-tracker-token')
+        window.location.reload()
+      }
+      const errData = await response.json().catch(() => ({}))
+      throw new Error(errData.error || 'Failed to fetch transactions')
+    }
+
+    return response.json()
+  },
+
+  async createTransaction(transaction: {
+    id: string
+    type: 'INCOME' | 'EXPENSE'
+    amount: number
+    category: string
+    date: string
+    note?: string
+  }) {
+    const response = await fetch(`${API_BASE_URL}/transactions`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify(transaction),
+    })
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        localStorage.removeItem('expense-tracker-token')
+        window.location.reload()
+      }
+      const errData = await response.json().catch(() => ({}))
+      throw new Error(errData.error || 'Failed to create transaction')
+    }
+
+    return response.json()
+  },
+
+  async deleteTransaction(id: string) {
+    const response = await fetch(`${API_BASE_URL}/transactions/${id}`, {
+      method: 'DELETE',
+      headers: getHeaders(),
+    })
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        localStorage.removeItem('expense-tracker-token')
+        window.location.reload()
+      }
+      const errData = await response.json().catch(() => ({}))
+      throw new Error(errData.error || 'Failed to delete transaction')
+    }
+
+    return response.json()
   },
 }
