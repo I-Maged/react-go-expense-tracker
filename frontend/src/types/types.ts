@@ -6,7 +6,7 @@ export type AuthState = {
 }
 
 export type AuthContextType = AuthState & {
-  login: (token: string, userEmail: string) => Promise<void>
+  authLogin: (token: string, userEmail: string) => Promise<void>
   logout: () => void
 }
 

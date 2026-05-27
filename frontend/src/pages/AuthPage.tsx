@@ -10,10 +10,12 @@ import {
 
 import './AuthPage.css'
 import { api } from '../services/api'
+import { useAuth } from '../context/auth/useAuthContext'
 
 type AuthMode = 'login' | 'signup'
 
 const AuthPage = () => {
+  const { authLogin } = useAuth()
   const [mode, setMode] = useState<AuthMode>('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -56,9 +58,12 @@ const AuthPage = () => {
 
     try {
       if (mode === 'login') {
+        const data = await api.login(email, password)
+        authLogin(data.token, data.user.email)
         setSuccess('Authentication successful! Loading dashboard...')
       } else {
-        await api.register(email, password)
+        const res = await api.register(email, password)
+        console.log(res)
         setSuccess('Account created successfully! You can now sign in.')
         setMode('login')
         setPassword('')

@@ -42,7 +42,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     dispatch({ type: 'INITIALIZE_AUTH' })
   }, [])
 
-  const login = async (token: string, userEmail: string) => {
+  const authLogin = async (token: string, userEmail: string) => {
     dispatch({ type: 'LOGIN_START' })
     try {
       dispatch({ type: 'LOGIN_SUCCESS', payload: { token, userEmail } })
@@ -61,7 +61,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, userEmail, isLoading, error, login, logout }}
+      value={{ token, userEmail, isLoading, error, authLogin, logout }}
     >
       {children}
     </AuthContext.Provider>

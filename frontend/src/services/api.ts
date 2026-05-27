@@ -15,4 +15,22 @@ export const api = {
 
     return response.json() as Promise<{ message: string; email: string }>
   },
+
+  async login(email: string, password: string) {
+    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    })
+
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}))
+      throw new Error(errData.error || 'Failed to sign in')
+    }
+
+    return response.json() as Promise<{
+      token: string
+      user: { id: number; email: string }
+    }>
+  },
 }
