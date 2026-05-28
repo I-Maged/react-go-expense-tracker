@@ -1,7 +1,7 @@
 const API_BASE_URL = 'http://localhost:8080/api'
 
 const getHeaders = (): HeadersInit => {
-  const token = localStorage.getItem('expense-tracker-token')
+  const token = localStorage.getItem('authToken')
   const headers: HeadersInit = { 'Content-Type': 'application/json' }
   if (token) {
     headers['Authorization'] = `Bearer ${token}`
@@ -52,7 +52,8 @@ export const api = {
 
     if (!response.ok) {
       if (response.status === 401) {
-        localStorage.removeItem('expense-tracker-token')
+        localStorage.removeItem('authToken')
+        localStorage.removeItem('authUserString')
         window.location.reload()
       }
       const errData = await response.json().catch(() => ({}))
@@ -78,7 +79,8 @@ export const api = {
 
     if (!response.ok) {
       if (response.status === 401) {
-        localStorage.removeItem('expense-tracker-token')
+        localStorage.removeItem('authToken')
+        localStorage.removeItem('authUserString')
         window.location.reload()
       }
       const errData = await response.json().catch(() => ({}))
@@ -96,7 +98,8 @@ export const api = {
 
     if (!response.ok) {
       if (response.status === 401) {
-        localStorage.removeItem('expense-tracker-token')
+        localStorage.removeItem('authToken')
+        localStorage.removeItem('authUserString')
         window.location.reload()
       }
       const errData = await response.json().catch(() => ({}))

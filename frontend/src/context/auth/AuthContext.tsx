@@ -11,7 +11,7 @@ import type { AuthContextType, AuthState } from '../../types/types'
 type AuthProviderProps = { children: ReactNode }
 
 const initialToken = localStorage.getItem('authToken')
-const initialEmail = localStorage.getItem('authUserEmail')
+const initialEmail = localStorage.getItem('authUserString')
 
 const initialState: AuthState = {
   token: initialToken,

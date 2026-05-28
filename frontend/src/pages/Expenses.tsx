@@ -1,3 +1,4 @@
+import AddTransactionForm from '../components/AddTransactionForm'
 import BalanceSummary from '../components/BalanceSummary'
 import FilterBar from '../components/FilterBar'
 import Header from '../components/Header'
@@ -12,6 +13,10 @@ const Expenses = () => {
         <BalanceSummary />
 
         <div className='app-grid'>
+          <div className='grid-left'>
+            <AddTransactionForm />
+          </div>
+
           <div className='grid-right'>
             <FilterBar />
             <TransactionList />
