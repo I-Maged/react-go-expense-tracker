@@ -53,3 +53,9 @@ export type ExpenseAction =
   | { type: 'INITIALIZE_STATE'; payload: ExpenseState }
   | { type: 'LOGIN'; payload: { token: string; email: string } }
   | { type: 'LOGOUT' }
+
+export type ExpenseContextValue = ExpenseState & {
+  addTransaction: (transaction: Transaction) => void
+  deleteTransaction: (id: string) => void
+  setFilters: (filter: Partial<FilterSettings>) => void
+}

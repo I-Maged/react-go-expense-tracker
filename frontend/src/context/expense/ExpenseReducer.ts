@@ -34,16 +34,6 @@ export const expenseReducer = (
         filterSettings: { ...state.filterSettings, ...action.payload },
       }
 
-    case 'LOGIN':
-      return {
-        ...state,
-        token: action.payload.token,
-        userEmail: action.payload.email,
-      }
-
-    case 'LOGOUT':
-      return { ...state, token: null, userEmail: null, transactions: [] }
-
     default:
       return state
   }
