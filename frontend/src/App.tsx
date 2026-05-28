@@ -1,6 +1,7 @@
 import AuthPage from './pages/AuthPage'
 import Expenses from './pages/Expenses'
 import AuthProvider from './context/auth/AuthContext'
+import ExpenseProvider from './context/expense/ExpenseContext'
 import { useAuth } from './context/auth/useAuthContext'
 
 const AppContent = () => {
@@ -20,7 +21,9 @@ const AppContent = () => {
 const App = () => {
   return (
     <AuthProvider>
-      <AppContent />
+      <ExpenseProvider>
+        <AppContent />
+      </ExpenseProvider>
     </AuthProvider>
   )
 }

@@ -1,0 +1,72 @@
+.balance-summary-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.balance-card {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 1.25rem;
+}
+
+.main-balance {
+  border-top: 2px solid var(--color-brand);
+}
+
+.income {
+  border-top: 2px solid var(--color-income);
+}
+
+.expense {
+  border-top: 2px solid var(--color-expense);
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-brand-glow);
+}
+
+.income-wrapper {
+  background: var(--color-income-glow);
+}
+
+.expense-wrapper {
+  background: var(--color-expense-glow);
+}
+
+.balance-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.amount {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.income-text {
+  color: var(--color-income);
+}
+
+.expense-text {
+  color: var(--color-expense);
+}

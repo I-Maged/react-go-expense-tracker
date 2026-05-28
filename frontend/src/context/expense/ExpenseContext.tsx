@@ -57,6 +57,7 @@ const ExpenseProvider: FC<ExpenseProviderProps> = ({ children }) => {
 
     fetchTransactions()
   }, [currency, filterSettings, token, userEmail])
+  //   }, [token])
 
   async function addTransaction(transaction: Transaction) {
     dispatch({ type: 'ADD_TRANSACTION', payload: transaction })

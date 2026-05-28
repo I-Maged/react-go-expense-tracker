@@ -55,13 +55,13 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     }
   }
 
-  const logout = () => {
+  const AuthLogout = () => {
     dispatch({ type: 'LOGOUT' })
   }
 
   return (
     <AuthContext.Provider
-      value={{ token, userEmail, isLoading, error, authLogin, logout }}
+      value={{ token, userEmail, isLoading, error, authLogin, AuthLogout }}
     >
       {children}
     </AuthContext.Provider>
