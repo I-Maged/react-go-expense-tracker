@@ -40,7 +40,6 @@ const FormProvider: FC<FormProviderProps> = ({ children }) => {
 
   const handleSubmit = (e: ChangeEvent) => {
     e.preventDefault()
-    console.log('hello')
     addTransaction({
       id: uuidv4(),
       type,

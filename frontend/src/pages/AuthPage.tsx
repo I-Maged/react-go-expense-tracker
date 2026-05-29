@@ -62,8 +62,7 @@ const AuthPage = () => {
         authLogin(data.token, data.user.email)
         setSuccess('Authentication successful! Loading dashboard...')
       } else {
-        const res = await api.register(email, password)
-        console.log(res)
+        await api.register(email, password)
         setSuccess('Account created successfully! You can now sign in.')
         setMode('login')
         setPassword('')

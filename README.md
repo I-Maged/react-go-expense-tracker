@@ -61,13 +61,13 @@ expense-tracker/
 Create a `.env` file at the root directory with the following variables:
 
 ```ini
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=postgres
-DB_NAME=expense_tracker
-DB_SSLMODE=disable
-JWT_SECRET=supersecretkey
+DB_HOST
+DB_PORT
+DB_USER
+DB_PASSWORD
+DB_NAME
+DB_SSLMODE
+JWT_SECRET
 ```
 
 ---
